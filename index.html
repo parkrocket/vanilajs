@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="forms">
+        <h1>학년 반 자동배정 프로그램</h1>
+        <input type="text" name="name" placeholder="이름을 입력하세요.">
+        <button id="bj_btn">배정하기</button>
+    </form>
+    <div id="class_wrap"></div>
+</body>
+</html>
+
+<script type="module">
+    import { school } from "./index.js";
+
+    const bj_btn = document.getElementById("bj_btn");
+
+    bj_btn.addEventListener("click",function(e){
+        
+        const frm = document.getElementById("forms");
+        const classes = school(frm.name.value);
+
+
+
+        document.getElementById("class_wrap").innerHTML = `${frm.name.value}님이 배정된 반은 ${classes}입니다.`;
+        
+        e.preventDefault();
+    })
+</script>
